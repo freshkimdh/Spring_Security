@@ -13,7 +13,22 @@
     	<!--access 이 권한을 가진 사람만 접근한다.  -->
     	
     	<!--이 url로 치고 들어오는 권한을 가진 사람에게만 패스 시켜주겠다.  -->
-        <intercept-url pattern="/admin/**" access="hasRole('ROLE_MEMBER')" />
+    	<intercept-url pattern="/" access="permitAll" />
+    	<intercept-url pattern="/login/loginForm" access="permitAll" />
+    	<!--"/admin/**" 치고 들어오는 사람 중에, ADMIN 에게만 연결 시켜주겠다.  -->
+        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
+        
+        
+        <form-login login-page="/login/loginForm"
+        			default-target-url="/"
+        			authentication-failure-url="/login/loginForm?error"
+        			username-parameter="id"
+        			password-parameter="password"/>
+        			
+        <logout logout-url="/logout" logout-success-url="/"/>
+        <!--쿠키 날리는 것 즉, session ID 날리는 것 --> 
+        <access-denied-handler error-page="/login/accessDenied"/>
         
         <!--이것이 디폴트 로그인 페이지 생성 해주는 놈이다. 인증 하려는 login 페이지 --> <!-- <form-login/> 디폴트 -->
         
@@ -29,8 +44,8 @@
 		<authentication-provider> 
 			<user-service> 
 				<!--id, pw 가 동일한 사람에게 권한을 주겠다.  -->
-				<user name="member" password="{noop}member" authorities="ROLE_MEMBER" /> 
-				<user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN" /> 
+				<user name="user" password="{noop}user" authorities="ROLE_USER" /> 
+				<user name="admin" password="{noop}admin" authorities="ROLE_USER, ROLE_ADMIN" /> 
 			</user-service> 
 		</authentication-provider>	
 	</authentication-manager>

@@ -45,10 +45,23 @@ public class HomeController {
 		log.info("adminHome...");
 	}
 	
+	@GetMapping("/user/userHome")
+	public void userHome() { // void는 "/admin/adminHome" 경로 가지고 오는 것 
+		log.info("adminHome...");
+	}
+	
 	@GetMapping("/login/loginForm")
-	public String loginForm() { // void는 "/admin/adminHome" 경로 가지고 오는 것 
+	public String loginForm() { 
 		log.info("Welcom Login Form!");
 		return "login/loginForm";
 	}
+	
+	@GetMapping("/login/accessDenied")
+	public void accessDenied() { 
+		log.info("Welcom Login Form!");
+	}
+	
+	
+	
 	
 }
