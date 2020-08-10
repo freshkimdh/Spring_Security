@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>메이페이지</title>
+	<title>메인페이지</title>
 </head>
 
 <body>
@@ -22,10 +22,17 @@
 	<form:form action="${pageContext.request.contextPath}/logout" method="POST"> 
 	    <input type="submit" value="로그아웃" />
 	</form:form>
+	
+	<sec:authentication var="principal" property="principal" />
+	<p>${principal.username} 님 환영합니다.</p> 
+	
 	<p><a href="<c:url value="/loginInfo" />">로그인 정보 확인 방법3 가지</a></p>
 </sec:authorize>
 
+
+
 <h3>
+	[<a href="<c:url value="/user/userForm" />">회원가입</a>]
     [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
 </h3>
