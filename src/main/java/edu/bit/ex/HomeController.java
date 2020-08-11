@@ -58,7 +58,7 @@ public class HomeController {
 	@GetMapping("/login/loginForm")
 	public String loginForm() { 
 		log.info("Welcom Login Form!");
-		return "login/loginForm";
+		return "login/loginForm2";
 	}
 	
 	@GetMapping("/login/accessDenied")

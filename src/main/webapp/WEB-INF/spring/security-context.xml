@@ -49,6 +49,7 @@
 				<user name="user" password="{noop}user" authorities="ROLE_USER" /> 
 				<user name="admin" password="{noop}admin" authorities="ROLE_USER, ROLE_ADMIN" /> 
 				<!--스프링 내부족으로 user-service 객체를 생성해서 메모리에 올린다.  -->
+				<!--이것이 유저디테일서비스   -->
 			</user-service> 
 		</authentication-provider>	
 	</authentication-manager>
